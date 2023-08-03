@@ -71,7 +71,7 @@ function socialLink() {
     },
     {
       name: "LinkedIn",
-      link: "https://www.linkedin.com/in/iayushDev/",
+      link: "https://www.linkedin.com/in/ayush-mehrotra-99419724b",
     },
   ];
 
