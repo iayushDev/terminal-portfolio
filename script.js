@@ -1,6 +1,23 @@
 const outputElement = document.getElementById("output");
 const inputElement = document.getElementById("input");
 
+const starterText = [
+  "Hi, My Name is Ayush, This is a Linux Based Portfolio",
+  "I Love Linux  🐧 and Web Development",
+  "All Commands are resume , ls, social -a",
+];
+
+// Print starter text gradually with a delay
+function printStarterText() {
+  let delay = 1000;
+  starterText.forEach((text) => {
+    setTimeout(() => {
+      appendToTerminal(text);
+    }, delay);
+    delay += 1000; // Adjust the delay here (1 second in this example)
+  });
+}
+
 inputElement.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -9,9 +26,8 @@ inputElement.addEventListener("keydown", function (event) {
   }
 });
 
-appendToTerminal(`Hi, My Name is Ayush, This is a Linux Based Portfolio`);
-appendToTerminal("I Love Linux  🐧 and Web Development");
-appendToTerminal("All Commands are resume , ls, social -a");
+// Call the function to print the starter text
+printStarterText();
 
 function handleUserInput(input) {
   appendToTerminal(`$ <span class="command">${input}</span>`); // Display command with formatting
@@ -36,6 +52,7 @@ function appendToTerminal(text, isOutput = false) {
   const newLine = document.createElement("div");
   newLine.classList.add(isOutput ? "output" : "input");
   newLine.innerHTML = text;
+  newLine.style.fontFamily = "monospace";
   outputElement.appendChild(newLine);
   outputElement.scrollTop = outputElement.scrollHeight;
 }
@@ -64,3 +81,26 @@ function socialLink() {
     );
   });
 }
+
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+document.querySelector("h1").onmouseover = (event) => {
+  let iterations = 0;
+  let interval = setInterval(() => {
+    event.target.innerText = event.target.innerText
+      .split("")
+      .map((letter, index) => {
+        if (index < iterations) {
+          return event.target.dataset.value[index];
+        }
+
+        return letters[Math.floor(Math.random() * 26)];
+      })
+
+      .join("");
+
+    if (iterations >= event.target.dataset.value.length) {
+      clearInterval(interval);
+    }
+    iterations += 1 / 3;
+  }, 30);
+};
