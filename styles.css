@@ -1,0 +1,30 @@
+body {
+    background-color: #2c2c2c;
+    color: #f0f0f0;
+    font-family: "Menlo", monospace;
+    margin: 0;
+}
+.command {
+    font-weight: bold;
+}
+.terminal {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #1b1b1b;
+    padding: 10px;
+    border: 2px solid #8d8d8d;
+    box-shadow: 0 0 10px #8d8d8d;
+    min-height: 300px;
+    overflow-y: auto;
+}
+
+input {
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+.output {
+    color: #f0f0f0; /* White color for output */
+}
