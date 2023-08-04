@@ -1,10 +1,15 @@
 const outputElement = document.getElementById("output");
 const inputElement = document.getElementById("input");
+const terminal = document.querySelector(".terminal");
+
+terminal.addEventListener("click", () => {
+  inputElement.focus();
+});
 
 const starterText = [
   "Hi, My Name is Ayush, This is a Linux Based Portfolio",
   "I Love Linux  🐧 and Web Development",
-  "All Commands are resume , ls, social -a",
+  "All Commands are resume , ls, social -a ,skills -a ,about me",
 ];
 
 // Print starter text gradually with a delay
@@ -32,12 +37,26 @@ printStarterText();
 function handleUserInput(input) {
   appendToTerminal(`$ <span class="command">${input}</span>`); // Display command with formatting
 
-  if (input === "ls") {
-    appendToTerminal(`All Commands are ls, resume , social -a}`, true);
-  } else if (input === "resume") {
+  if (input == "ls") {
+    appendToTerminal(
+      `All Commands are ls, about me, resume , social -a,skills -a }`,
+      true
+    );
+  } else if (input == "resume") {
     redirectToResume();
-  } else if (input === "social -a") {
+  } else if (input == "social -a") {
     socialLink(); // Display social links
+  } else if (input === "skills -a") {
+    appendToTerminal(`Languages:      Javascript,SQL, Python `);
+    appendToTerminal(
+      `TechStack:       NextJS,ReactJS,NodeJS,MongoDB,ExpressJS,Firebase,Supabase,`
+    );
+  } else if (input == "about me") {
+    appendToTerminal(
+      `My Name is Ayush Mehrotra
+I Love Computer Science
+I Love Web Development My Expertise are in JS and It's Framework`
+    );
   } else {
     appendToTerminal(`${processCommand(input)}:  Command Not Found `, true);
   }
@@ -71,7 +90,11 @@ function socialLink() {
     },
     {
       name: "LinkedIn",
-      link: "https://www.linkedin.com/in/ayush-mehrotra-99419724b",
+      link: "https://www.linkedin.com/in/iayushDev/",
+    },
+    {
+      name: "Instagram",
+      link: "https://www.instagram.com/mein.ayush.hoon/?utm_source=qr&igshid=ZDc4ODBmNjlmNQ%3D%3D",
     },
   ];
 
