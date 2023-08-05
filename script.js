@@ -54,7 +54,7 @@ function handleUserInput(input) {
   } else if (input == "about me") {
     appendToTerminal(
       `My Name is Ayush Mehrotra
-I Love Computer Science
+I Love Computer Technology 
 I Love Web Development My Expertise are in JS and It's Framework`
     );
   } else {
