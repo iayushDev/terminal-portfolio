@@ -57,14 +57,16 @@ function handleUserInput(input) {
 I Love Computer Technology 
 I Love Web Development My Expertise are in JS and It's Framework`
     );
-  } else {
+  } else if(input == "clear"){
+    inputElement.value=""
+  }else {
     appendToTerminal(`${processCommand(input)}:  Command Not Found `, true);
   }
 }
 
 function redirectToResume() {
   window.location.href =
-    "https://drive.google.com/u/0/uc?id=19iYTIl0gvQQL0Ujl2zvTypZ7XxUuqRgI&export=download";
+    "https://drive.google.com/file/d/1OOZ7zVMmsqcEoiPKyuxVViRdWjNp1HAL/view?pli=1";
 }
 
 function appendToTerminal(text, isOutput = false) {
@@ -86,11 +88,11 @@ function socialLink() {
   const links = [
     {
       name: "Github",
-      link: "https://github.com/iayushDev",
+      link: "https://github.com/mrayushmehrotra",
     },
     {
       name: "LinkedIn",
-      link: "https://www.linkedin.com/in/iayushDev/",
+      link: "https://www.linkedin.com/in/ayush-mehrotra-99419724b/",
     },
     {
       name: "Instagram",
