@@ -1,54 +1,33 @@
+@font-face {
+  font-family: "CascadiaCode";
+  src: url("/Cascadia.ttf");
+}
+
 body {
-    background-color: #141414; /* Darker background color */
-    color: rgb(255, 255, 255);
-    font-family: monospace;
-    margin: 0;
-    overflow-y: none;
-    height:100%;
-    width:100%;
-    font-size: 1rem;
-
+  scroll-behavior: smooth;
+  font-family: "CascadiaCode", monospace;
 }
 
-h1{
-    position:absolute;
-    left:15%;
-    color:rgb(255, 255, 255);
-    font-size :10rem;
-    font-family: "Space Mono" ,monospace;
-    justify-content: center;
-    align-items: center;
+/* Custom scrollbar styling for Webkit-based browsers (Chrome, Edge, Safari) */
+body::-webkit-scrollbar {
+  width: 9px; /* Set the width of the scrollbar */
+  border-radius: 500px;
 }
 
-.command {
-    font-weight: bold;
-    color: #ffffff; /* Lighter color for the command text */
+body::-webkit-scrollbar-track {
+  background: #000; /* Black track background */
+  border: 2px solid #fff; /* White border */
+  border-radius: 50px; /* Rounded corners for the track */
 }
 
-.terminal {
-    width: 80%;
-    margin: 20px auto;
-    background-color: #1a1a1a; /* Slightly lighter background color */
-    padding: 10px;
-    border: 2px solid #525252; /* Darker border color */
-    box-shadow: 0 0 10px #525252; /* Darker shadow color */
-    min-height: 300px;
-    overflow-y: auto;
+body::-webkit-scrollbar-thumb {
+  background-color: #555; /* Dark gray scrollbar thumb */
+  border: 2px solid #fff; /* White border around the thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
 }
 
-
-div .input-container{
-    display:flex;
-}
-
-input {
-    background-color: transparent;
-    color: #f0f0f0;
-    border: none;
-    outline: none;
-    width: 100%;
-}
-
-.output {
-    color: #f0f0f0; /* White color for output */
+/* Custom scrollbar styling for Firefox */
+body {
+  scrollbar-color: #555 #000; /* Thumb and track colors */
+  scrollbar-width: thin; /* Thin scrollbar */
 }

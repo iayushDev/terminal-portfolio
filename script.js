@@ -1,15 +1,15 @@
 const outputElement = document.getElementById("output");
 const inputElement = document.getElementById("input");
-const terminal = document.querySelector(".terminal");
 
-terminal.addEventListener("click", () => {
+// Ensure focus on input when the terminal is clicked
+document.querySelector("aside").addEventListener("click", () => {
   inputElement.focus();
 });
 
 const starterText = [
-  "Hi, My Name is Ayush, This is a Linux Based Portfolio",
-  "I Love Linux  🐧 and Web Development",
-  "All Commands are resume , ls, social -a ,skills -a ,about me",
+  "Hi, My Name is Ayush, This is a Linux-Based Portfolio",
+  "I Love Linux 🐧 and Web Development",
+  "All Commands are resume, ls, social -a, skills -a, about me",
 ];
 
 // Print starter text gradually with a delay
@@ -35,32 +35,42 @@ inputElement.addEventListener("keydown", function (event) {
 printStarterText();
 
 function handleUserInput(input) {
-  appendToTerminal(`$ <span class="command">${input}</span>`); // Display command with formatting
+  appendToTerminal(`$ <span class="text-green-400">${input}</span>`); // Display command with formatting
 
   if (input == "ls") {
     appendToTerminal(
-      `All Commands are ls, about me, resume , social -a,skills -a }`,
-      true
+      `All Commands are ls, about me, resume, social -a, skills -a`,
+      true,
     );
   } else if (input == "resume") {
     redirectToResume();
   } else if (input == "social -a") {
     socialLink(); // Display social links
   } else if (input === "skills -a") {
-    appendToTerminal(`Languages:      Javascript,SQL, Python `);
+    appendToTerminal(`Languages: JavaScript,Python,Rust,Lua, SQL`);
+
+    appendToTerminal(`Frontend: React, HTML, CSS, JS, TS, TailwindCSS`);
+    appendToTerminal(`Backend: NodeJS, ExpressJS, Python, Flask`);
     appendToTerminal(
-      `TechStack:       NextJS,ReactJS,NodeJS,MongoDB,ExpressJS,Firebase,Supabase,`
+      `IT Constructs & Tools: DSA, OOPs, Linux, Git, Docker, NeoVim, Postman`,
+    );
+    appendToTerminal(
+      `Database & ORM's: MongoDB, Supabase,Firebase,  MySQL, Prisma, GraphQL`,
     );
   } else if (input == "about me") {
     appendToTerminal(
-      `My Name is Ayush Mehrotra
-I Love Computer Technology 
-I Love Web Development My Expertise are in JS and It's Framework`
+      `My Name is Ayush Mehrotra\nI Love Computer Technology\nI Love Web Development. My Expertise is in JS and its Frameworks.`,
     );
-  } else if(input == "clear"){
-    inputElement.value=""
-  }else {
-    appendToTerminal(`${processCommand(input)}:  Command Not Found `, true);
+  } else if (input == "clear") {
+    outputElement.innerHTML = ""; // Clear the terminal output
+  } else {
+    appendToTerminal(
+      `${processCommand(input)}: <span class="text-red-700">Command Not Found </span > <br> 
+        write 'ui' for better user experience
+
+`,
+      true,
+    );
   }
 }
 
@@ -73,59 +83,27 @@ function appendToTerminal(text, isOutput = false) {
   const newLine = document.createElement("div");
   newLine.classList.add(isOutput ? "output" : "input");
   newLine.innerHTML = text;
-  newLine.style.fontFamily = "monospace";
   outputElement.appendChild(newLine);
   outputElement.scrollTop = outputElement.scrollHeight;
 }
 
 function processCommand(input) {
-  // Process the input here and return the output
-  // For this example, let's just return the input as it is
-  return input;
+  return input; // Placeholder for processing commands
 }
 
 function socialLink() {
   const links = [
-    {
-      name: "Github",
-      link: "https://github.com/mrayushmehrotra",
-    },
+    { name: "GitHub", link: "https://github.com/mrayushmehrotra" },
     {
       name: "LinkedIn",
       link: "https://www.linkedin.com/in/ayush-mehrotra-99419724b/",
     },
-    {
-      name: "Instagram",
-      link: "https://www.instagram.com/mein.ayush.hoon/?utm_source=qr&igshid=ZDc4ODBmNjlmNQ%3D%3D",
-    },
+    { name: "Instagram", link: "https://www.instagram.com/mein.ayush.hoon/" },
   ];
 
   links.forEach((item) => {
     appendToTerminal(
-      `<a style="color: white" href="${item.link}" target="_blank">${item.name}</a>`
+      `<a class="text-blue-400" href="${item.link}" target="_blank">${item.name}</a>`,
     );
   });
 }
-
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-document.querySelector("h1").onmouseover = (event) => {
-  let iterations = 0;
-  let interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if (index < iterations) {
-          return event.target.dataset.value[index];
-        }
-
-        return letters[Math.floor(Math.random() * 26)];
-      })
-
-      .join("");
-
-    if (iterations >= event.target.dataset.value.length) {
-      clearInterval(interval);
-    }
-    iterations += 1 / 3;
-  }, 30);
-};
